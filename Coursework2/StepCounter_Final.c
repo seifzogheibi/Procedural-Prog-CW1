@@ -49,12 +49,12 @@ int main() {
     
     char filename [] = "FitnessData_2023.csv";
 
-    printf("Input filename: ");
-    fgets(line, buffer_size, stdin);
-    sscanf(line, " %s ", filename);
+    //printf("Input filename: ");
+    //fgets(line, buffer_size, stdin);
+    //sscanf(line, " %s ", filename);
 
     FILE *input = fopen(filename, "r");
- if (!input)
+    if (!input)
     {
         printf("Error: File could not be opened\n");
         return 1;
@@ -69,7 +69,7 @@ int main() {
 
     }
 
-    int numberOfElements = counter;
+    //int numberOfElements = counter;
     char choice;
     fclose(input);
 
@@ -80,7 +80,7 @@ int main() {
         printf("C: Find the date and time of the timeslot with the fewest steps\n");
         printf("D: Find the data and time of the timeslot with the largest number of steps\n");
         printf("E: Find the mean step count of all the records in the file\n");
-        printf("F: : Find the longest continuous period where the step count is above 500 steps\n");
+        printf("F: Find the longest continuous period where the step count is above 500 steps\n");
         printf("Q: Exit the program\n");
 
         // get the next character typed in and store in the 'choice'
@@ -96,13 +96,12 @@ int main() {
         case 'A':
         case 'a':
 
-        //printf(filename);
-            //for (int i = 0; i < numberOfElements; i++)
-           // {
-              //  printf("%s - FitnessData %.1d\n", Fitness[i].date, Fitness[i].steps, Fitness[i].time);
-          // }
-           // break;
-       // }
+            printf("Input filename: ");
+            fgets(line, buffer_size, stdin);
+            sscanf(line, " %s ", filename);
+
+        break;
+        }
     }
 }
 
