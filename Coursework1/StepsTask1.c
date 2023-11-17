@@ -6,7 +6,7 @@
 typedef struct {
 	char date[11];
 	char time[6];
-	char steps[5];
+	int steps;
 } FitnessData;
 
 // Define any additional variables here
