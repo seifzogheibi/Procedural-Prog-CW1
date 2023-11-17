@@ -9,7 +9,7 @@ typedef struct {
 	char date[11];
 	char time[6];
 	int steps;
-} FITNESS_DATA;
+} FitnessData;
 
 // Helper function prototypes
 void tokeniseRecord(const char *input, const char *delimiter, char *date, char *time, char *steps);

@@ -42,9 +42,69 @@ void tokeniseRecord(const char *input, const char *delimiter,
 
 // Complete the main function
 int main() {
-   
-}
+   FitnessData Fitness[900];
+   #define buffer_size 900
+   char line[buffer_size];
+   char steps2[900];
+    
+    char filename [] = "FitnessData_2023.csv";
 
+    printf("Input filename: ");
+    fgets(line, buffer_size, stdin);
+    sscanf(line, " %s ", filename);
+
+    FILE *input = fopen(filename, "r");
+ if (!input)
+    {
+        printf("Error: File could not be opened\n");
+        return 1;
+    }
+
+    int counter = 0;
+    while (fgets(line, buffer_size, input))
+    {
+        tokeniseRecord(line, ",", Fitness[counter].date, Fitness[counter].time, steps2);
+        counter++;
+        sscanf(steps2, "%d", &Fitness[counter].steps);
+
+    }
+
+    int numberOfElements = counter;
+    char choice;
+    fclose(input);
+
+     while (1)
+    {
+        printf("A: Specify the filename to be imported\n");
+        printf("B: Display the total number of records in the file\n");
+        printf("C: Find the date and time of the timeslot with the fewest steps\n");
+        printf("D: Find the data and time of the timeslot with the largest number of steps\n");
+        printf("E: Find the mean step count of all the records in the file\n");
+        printf("F: : Find the longest continuous period where the step count is above 500 steps\n");
+        printf("Q: Exit the program\n");
+
+        // get the next character typed in and store in the 'choice'
+        choice = getchar();
+
+        // this gets rid of the newline character which the user will enter
+        // as otherwise this will stay in the stdin and be read next time
+        while (getchar() != '\n');
+
+        switch (choice)
+        {
+        // this allows for either capital or lower case
+        case 'A':
+        case 'a':
+
+        //printf(filename);
+            //for (int i = 0; i < numberOfElements; i++)
+           // {
+              //  printf("%s - FitnessData %.1d\n", Fitness[i].date, Fitness[i].steps, Fitness[i].time);
+          // }
+           // break;
+       // }
+    }
+}
 
 
 
