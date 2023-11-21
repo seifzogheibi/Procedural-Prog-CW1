@@ -45,7 +45,7 @@ int main() {
    FitnessData Fitness[900];
    #define buffer_size 900
    char line[buffer_size];
-   char steps2[900];
+   char strsteps[900];
     
     char filename [] = "FitnessData_2023.csv";
 
@@ -53,28 +53,20 @@ int main() {
     //fgets(line, buffer_size, stdin);
     //sscanf(line, " %s ", filename);
 
-    FILE *input = fopen(filename, "r");
-    if (!input)
-    {
-        printf("Error: File could not be opened\n");
-        return 1;
-    }
+    int numberOfElements = 0;
+    char choice;
 
     int counter = 0;
-    while (fgets(line, buffer_size, input))
-    {
-        tokeniseRecord(line, ",", Fitness[counter].date, Fitness[counter].time, steps2);
-        counter++;
-        sscanf(steps2, "%d", &Fitness[counter].steps);
+    int minimum = 0;
+    int maximum = 1000;
+    float mean = 0;
+    float sum = 0;
 
-    }
-
-    //int numberOfElements = counter;
-    char choice;
-    fclose(input);
+    
 
      while (1)
     {
+        printf("Menu Options:\n");
         printf("A: Specify the filename to be imported\n");
         printf("B: Display the total number of records in the file\n");
         printf("C: Find the date and time of the timeslot with the fewest steps\n");
@@ -100,7 +92,88 @@ int main() {
             fgets(line, buffer_size, stdin);
             sscanf(line, " %s ", filename);
 
-        break;
+            FILE *input = fopen(filename, "r");
+            if (!input)
+            {
+                printf("Error: File could not be opened\n");
+                return 1;
+            }
+
+            int counter = 0;
+            while (fgets(line, buffer_size, input))
+            {
+                tokeniseRecord(line, ",", Fitness[counter].date, Fitness[counter].time, strsteps);
+                sscanf(strsteps, "%d", &Fitness[counter].steps);
+
+                counter++;
+            }
+            numberOfElements = counter;
+            printf("File successfully loaded.\n");
+
+             break;
+        
+
+        case 'B':
+        case 'b':
+            
+        printf("Total records: %d\n", numberOfElements);
+            
+            break;
+
+
+        case 'C':
+        case 'c':
+
+            for (int i = 0; i< numberOfElements; i++)
+            {
+                if (Fitness[i].steps < Fitness[minimum].steps) 
+                {
+                    minimum = i;
+                }
+            }
+        printf("Fewest steps: %s %s\n", Fitness[minimum].date, Fitness[minimum].time);
+            break;
+
+        case 'D':
+        case 'd':
+
+            for (int i = 0; i< numberOfElements; i++)
+            {
+                if (Fitness[i].steps > Fitness[maximum].steps) 
+                {
+                    maximum = i;
+                }
+            }
+            printf("Largest steps: %s %s\n", Fitness[maximum].date, Fitness[maximum].time);
+            break;
+
+        case 'E':
+        case 'e':
+
+        sum = 0;
+        mean = 0;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {      
+                sum += Fitness[i].steps;
+            }
+            mean = sum / numberOfElements;
+            printf("Mean step count: %.2f\n", mean);
+            break;
+
+        case 'Q':
+        case 'q':
+
+            return 0;
+
+            break;
+
+        default:
+
+            printf("Invalid choice. Try again.\n");
+
+            break;
+
         }
     }
 }
