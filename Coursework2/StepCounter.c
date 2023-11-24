@@ -59,7 +59,7 @@ int main() {
     int counter = 0;
     int minimum = 0;
     int maximum = 0;
-    int mean = 0;
+    float mean = 0;
     float sum = 0;
     int maxcount = 0;
     int stepcount = 0;
@@ -160,7 +160,7 @@ int main() {
                 sum += Fitness[i].steps;
             }
             mean = sum / numberOfElements;
-            printf("Mean step count: %d\n", mean);
+            printf("Mean step count: %.0f\n", mean);
             break;
 
 
@@ -184,7 +184,7 @@ int main() {
             
          }
 
-        printf("Longest period start: %s %s\n", Fitness[maximum].date, Fitness[maximum].time);
+        printf("Longest period start: %s %s\n", Fitness[maxcount].date, Fitness[maxcount].time);
         printf("number of steps > 500 is : %d\n", maxcount);
 
 
