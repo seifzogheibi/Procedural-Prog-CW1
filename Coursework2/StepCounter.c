@@ -34,7 +34,6 @@ void tokeniseRecord(const char *input, const char *delimiter,
     
     // Free the duplicated string
     free(inputCopy);
-
                     }
 
 
@@ -174,8 +173,16 @@ int main() {
          {
             if (Fitness[i].steps > 500)
             {
-                stepcount+=1;
+                //printf("current index outer = %d\n",i);
+                stepcount += 1;
+                if (stepcount > maxcount)
+                {
+                //printf("current index inner = %d\n",i);
+                
+                //printf("Longest period end: %s %s\n",Fitness[maxcount].date,Fitness[maxcount].time);
+
                 maxcount = stepcount;
+                }
             }
             else
             {
@@ -184,7 +191,7 @@ int main() {
             
          }
 
-        printf("Longest period start: %s %s\n", Fitness[maxcount].date, Fitness[maxcount].time);
+        printf("Longest period end: %s %s\n", Fitness[maxcount].date, Fitness[maxcount].time);
         printf("number of steps > 500 is : %d\n", maxcount);
 
 
