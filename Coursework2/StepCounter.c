@@ -48,10 +48,6 @@ int main() {
     
     char filename [] = "FitnessData_2023.csv";
 
-    //printf("Input filename: ");
-    //fgets(line, buffer_size, stdin);
-    //sscanf(line, " %s ", filename);
-
     int numberOfElements = 0;
     char choice;
 
@@ -85,7 +81,7 @@ int main() {
 
         switch (choice)
         {
-        // this allows for either capital or lower case
+
         case 'A':
         case 'a':
 
@@ -168,20 +164,26 @@ int main() {
         
          maxcount = 0;
          stepcount = 0;
+         i_end = 0;
 
          for (int i = 0; i< numberOfElements; i++) 
          {
             if (Fitness[i].steps > 500)
             {
-                //printf("current index outer = %d\n",i);
+                //printf("indicies of steps > 500 = %d stepcount = %d maxcount = %d\n",i, stepcount, maxcount);
                 stepcount += 1;
                 if (stepcount > maxcount)
                 {
-                //printf("current index inner = %d\n",i);
+                printf("current index inner = %d\n",i);
                 
                 //printf("Longest period end: %s %s\n",Fitness[maxcount].date,Fitness[maxcount].time);
 
                 maxcount = stepcount;
+
+                i_end = 
+                
+
+                //longestseq[maxcount.length] = 
                 }
             }
             else
