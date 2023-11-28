@@ -69,6 +69,7 @@ int main() {
         printf("E: Find the mean step count of all the records in the file\n");
         printf("F: Find the longest continuous period where the step count is above 500 steps\n");
         printf("Q: Exit the program\n");
+        printf("Enter choice: ");
 
         choice = getchar();
 
@@ -87,7 +88,7 @@ int main() {
             FILE *input = fopen(filename, "r");
             if (!input)
             {
-                printf("Error: File could not be opened\n");
+                printf("Error: Could not find or open the file.\n");
                 return 1;
             }
 
@@ -165,8 +166,8 @@ int main() {
          {
             if (Fitness[i].steps > 500)
             {
-                printf("indicies of steps > 500 = %d stepcount = %d maxcount = %d\n",i, stepcount, maxcount);
-                stepcount += 1;
+            stepcount += 1;
+
                 if (stepcount > maxcount)
                 {
 
