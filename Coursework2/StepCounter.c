@@ -158,44 +158,39 @@ int main() {
             printf("Mean step count: %.0f\n", mean);
             break;
 
-
         case 'F':
         case 'f':
         
          maxcount = 0;
          stepcount = 0;
-         i_end = 0;
+         int i_end = 0;
+         int i_start = 0;
 
          for (int i = 0; i< numberOfElements; i++) 
          {
             if (Fitness[i].steps > 500)
             {
-                //printf("indicies of steps > 500 = %d stepcount = %d maxcount = %d\n",i, stepcount, maxcount);
+                printf("indicies of steps > 500 = %d stepcount = %d maxcount = %d\n",i, stepcount, maxcount);
                 stepcount += 1;
                 if (stepcount > maxcount)
                 {
-                printf("current index inner = %d\n",i);
-                
-                //printf("Longest period end: %s %s\n",Fitness[maxcount].date,Fitness[maxcount].time);
 
-                maxcount = stepcount;
-
-                i_end = 
-                
-
-                //longestseq[maxcount.length] = 
+                    maxcount = stepcount;
+                    i_end = i;
                 }
             }
             else
             {
-            stepcount = 0;
+                stepcount = 0;
             }
             
          }
 
-        printf("Longest period end: %s %s\n", Fitness[maxcount].date, Fitness[maxcount].time);
-        printf("number of steps > 500 is : %d\n", maxcount);
+        i_start = i_end - (maxcount -1);
 
+        printf("Longest period start: %s %s\n", Fitness[i_start].date, Fitness[i_start].time);
+        printf("Longest period end: %s %s\n", Fitness[i_end].date, Fitness[i_end].time);
+        break;
 
         case 'Q':
         case 'q':
