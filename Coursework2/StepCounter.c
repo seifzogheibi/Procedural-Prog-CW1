@@ -59,8 +59,6 @@ int main() {
     int maxcount = 0;
     int stepcount = 0;
 
-    
-
      while (1)
     {
         printf("Menu Options:\n");
@@ -72,11 +70,8 @@ int main() {
         printf("F: Find the longest continuous period where the step count is above 500 steps\n");
         printf("Q: Exit the program\n");
 
-        // get the next character typed in and store in the 'choice'
         choice = getchar();
 
-        // this gets rid of the newline character which the user will enter
-        // as otherwise this will stay in the stdin and be read next time
         while (getchar() != '\n');
 
         switch (choice)
